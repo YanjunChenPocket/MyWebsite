@@ -640,7 +640,7 @@ p { margin: 0 0 1em; }
   top: 5.5rem;
   left: calc(50% + var(--max-width) / 2 + 1.25rem);
   width: calc((100vw - var(--max-width)) / 2 - 2.5rem);
-  max-width: 370px;
+  max-width: 350px;
   max-height: calc(100vh - 7rem);
   display: flex;
   flex-direction: column;
