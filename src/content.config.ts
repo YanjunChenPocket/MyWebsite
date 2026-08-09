@@ -13,6 +13,7 @@ const publications = defineCollection({
     doiUrl: z.string().optional(),
     videoUrl: z.string().optional(),
     previewVideo: z.string().optional(),
+    previewImage: z.string().optional(),
     previewPlaceholder: z.string().optional(),
     previewNote: z.string().optional(),
     award: z.string().optional(),
