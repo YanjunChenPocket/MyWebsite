@@ -306,57 +306,83 @@ p { margin: 0 0 1em; }
 .hero-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  align-items: center;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
-/* Shared size for all hero buttons */
-.hero-link-cv,
-.hero-link-linkedin,
-.hero-link-scholar,
-.hero-link-github,
-.hero-link-email {
+.hero-action-links,
+.hero-social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.hero-link-action,
+.hero-link-social {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 38px;
-  border-radius: var(--radius);
   text-decoration: none;
-  transition: background var(--transition), border-color var(--transition);
+  transition: background var(--transition), transform var(--transition);
   flex-shrink: 0;
 }
 
-/* CV — orange, text */
-.hero-link-cv {
+.hero-link-action {
+  width: 108px;
+  height: 44px;
+  gap: 0.55rem;
+  border-radius: 8px;
   font-family: var(--font);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 1px;
   color: #ffffff;
+}
+.hero-link-action svg {
+  width: 21px;
+  height: 21px;
+  fill: currentColor;
+}
+.hero-link-action:hover,
+.hero-link-social:hover { transform: translateY(-1px); }
+.hero-link-action:focus-visible,
+.hero-link-social:focus-visible {
+  outline: 3px solid rgba(0, 0, 0, 0.22);
+  outline-offset: 3px;
+}
+
+/* Email and CV — matching rectangular action buttons */
+.hero-link-email { background: var(--color-btn-email); }
+.hero-link-email:hover { background: var(--color-btn-email-hover); color: #ffffff; }
+.hero-link-cv {
   background: var(--color-btn-cv);
 }
 .hero-link-cv:hover { background: var(--color-btn-cv-hover); color: #ffffff; }
 
-/* LinkedIn — LinkedIn blue, icon only */
+/* Scholar, LinkedIn, and GitHub — matching circular profile buttons */
+.hero-link-social {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
 .hero-link-linkedin {
   background: #0a66c2;
   color: #ffffff;
 }
 .hero-link-linkedin svg {
-  width: 26px;
-  height: 26px;
+  width: 23px;
+  height: 23px;
   fill: currentColor;
 }
 .hero-link-linkedin:hover { background: #1880d0; color: #ffffff; }
 
-/* Scholar — default blue, white icon; lighter blue on hover */
 .hero-link-scholar {
   background: var(--color-btn-link);
 }
 .hero-link-scholar img {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   display: block;
   filter: brightness(0) invert(1);
 }
@@ -364,29 +390,16 @@ p { margin: 0 0 1em; }
   background: var(--color-btn-scholar-hover);
 }
 
-/* GitHub — black, icon only */
 .hero-link-github {
   background: #24292f;
   color: #ffffff;
 }
 .hero-link-github svg {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   fill: currentColor;
 }
 .hero-link-github:hover { background: #57606a; color: #ffffff; }
-
-/* Email — red, icon only */
-.hero-link-email {
-  color: #ffffff;
-  background: var(--color-btn-email);
-}
-.hero-link-email svg {
-  width: 26px;
-  height: 26px;
-  fill: currentColor;
-}
-.hero-link-email:hover { background: var(--color-btn-email-hover); color: #ffffff; }
 
 @media (max-width: 768px) {
   .hero {
@@ -397,7 +410,9 @@ p { margin: 0 0 1em; }
     margin: 0 auto;
     max-width: 260px;
   }
-  .hero-links { justify-content: center; }
+  .hero-links,
+  .hero-action-links,
+  .hero-social-links { justify-content: center; }
 }
 
 /* ==========================================================================
