@@ -560,10 +560,12 @@ p { margin: 0 0 1em; }
   justify-content: center;
   gap: 0.3rem;
   width: 80px;
-  padding: 0.3rem 0;
+  height: 38px;
+  padding: 0;
   font-family: var(--font);
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
+  line-height: 1;
   text-decoration: none;
   color: var(--color-btn-link);
   background: #ffffff;
@@ -573,8 +575,8 @@ p { margin: 0 0 1em; }
 }
 
 .entry-link-icon {
-  width: 14px;
-  height: 14px;
+  width: 17px;
+  height: 17px;
   flex-shrink: 0;
   fill: none;
   stroke: currentColor;
