@@ -563,7 +563,7 @@ p { margin: 0 0 1em; }
   height: 38px;
   padding: 0;
   font-family: var(--font);
-  font-size: 21px;
+  font-size: 19.3px;
   font-weight: 600;
   line-height: 1;
   text-decoration: none;
@@ -575,8 +575,8 @@ p { margin: 0 0 1em; }
 }
 
 .entry-link-icon {
-  width: 20px;
-  height: 20px;
+  width: 18.4px;
+  height: 18.4px;
   flex-shrink: 0;
   fill: none;
   stroke: currentColor;
