@@ -14,6 +14,7 @@ const publications = defineCollection({
     videoUrl: z.string().optional(),
     previewVideo: z.string().optional(),
     previewPlaceholder: z.string().optional(),
+    previewNote: z.string().optional(),
     award: z.string().optional(),
   }),
 });

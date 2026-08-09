@@ -8,6 +8,7 @@ interface Props {
   videoUrl?: string;
   previewVideo?: string;
   previewPlaceholder?: string;
+  previewNote?: string;
   award?: string;
 }
 
@@ -47,7 +48,8 @@ const posterUrl = props.previewVideo
         />
       ) : props.previewPlaceholder ? (
         <div class="entry-placeholder" aria-label={`${props.title} preview coming soon`}>
-          {props.previewPlaceholder}
+          <span class="entry-placeholder-text">{props.previewPlaceholder}</span>
+          {props.previewNote && <span class="entry-placeholder-note">{props.previewNote}</span>}
         </div>
       ) : null
     }

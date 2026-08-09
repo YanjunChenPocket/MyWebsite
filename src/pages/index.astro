@@ -33,6 +33,7 @@ const projects = (await getCollection('projects')).sort(
             videoUrl={p.data.videoUrl}
             previewVideo={p.data.previewVideo}
             previewPlaceholder={p.data.previewPlaceholder}
+            previewNote={p.data.previewNote}
             award={p.data.award}
           />
         ))

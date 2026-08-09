@@ -5,5 +5,6 @@ venue: "UIST 2026: The 39th Annual ACM Symposium on User Interface Software and 
 year: 2026
 order: -2
 paperUrl: "soon"
-previewPlaceholder: "soon"
+previewPlaceholder: "SOON"
+previewNote: "Public release date to be announced"
 ---
