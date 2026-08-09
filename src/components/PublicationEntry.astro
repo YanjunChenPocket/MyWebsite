@@ -70,21 +70,55 @@ const posterUrl = props.previewVideo
       {
         props.paperUrl && (
           props.paperUrl === 'soon'
-            ? <span class="entry-link entry-link-disabled">paper</span>
-            : <a href={props.paperUrl} class="entry-link" target="_blank" rel="noopener">paper</a>
+            ? (
+              <span class="entry-link entry-link-disabled">
+                <svg class="entry-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 3h7l4 4v14H7z" />
+                  <path d="M14 3v5h5M9.5 13.5h5M9.5 17h4" />
+                </svg>
+                <span>pdf</span>
+              </span>
+            )
+            : (
+              <a href={props.paperUrl} class="entry-link" target="_blank" rel="noopener">
+                <svg class="entry-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 3h7l4 4v14H7z" />
+                  <path d="M14 3v5h5M9.5 13.5h5M9.5 17h4" />
+                </svg>
+                <span>pdf</span>
+              </a>
+            )
         )
       }
       {
         props.doiUrl && (
           props.doiUrl === 'soon'
-            ? <span class="entry-link entry-link-disabled">doi</span>
-            : <a href={props.doiUrl} class="entry-link" target="_blank" rel="noopener">doi</a>
+            ? (
+              <span class="entry-link entry-link-disabled">
+                <svg class="entry-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M14 5h5v5M10 14l9-9M19 13v6H5V5h6" />
+                </svg>
+                <span>doi</span>
+              </span>
+            )
+            : (
+              <a href={props.doiUrl} class="entry-link" target="_blank" rel="noopener">
+                <svg class="entry-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M14 5h5v5M10 14l9-9M19 13v6H5V5h6" />
+                </svg>
+                <span>doi</span>
+              </a>
+            )
         )
       }
       {
         props.videoUrl && (
           <a href={props.videoUrl} class="entry-link" target="_blank" rel="noopener">
-            video
+            <svg class="entry-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path class="entry-link-icon-fill" d="m10 8 6 4-6 4z" />
+            </svg>
+            <span>video</span>
           </a>
         )
       }

@@ -567,6 +567,7 @@ p { margin: 0 0 1em; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.3rem;
   width: 80px;
   padding: 0.3rem 0;
   font-family: var(--font);
@@ -579,6 +580,23 @@ p { margin: 0 0 1em; }
   border-radius: var(--radius);
   transition: background var(--transition), color var(--transition);
 }
+
+.entry-link-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.entry-link-icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
 .entry-link:hover {
   background: var(--color-btn-link-hover);
   color: #ffffff;
