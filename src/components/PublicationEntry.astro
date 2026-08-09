@@ -7,6 +7,7 @@ interface Props {
   doiUrl?: string;
   videoUrl?: string;
   previewVideo?: string;
+  previewPlaceholder?: string;
   award?: string;
 }
 
@@ -44,6 +45,10 @@ const posterUrl = props.previewVideo
           x5-video-player-type="h5-page"
           controlsList="nodownload"
         />
+      ) : props.previewPlaceholder ? (
+        <div class="entry-placeholder" aria-label={`${props.title} preview coming soon`}>
+          {props.previewPlaceholder}
+        </div>
       ) : null
     }
   </div>
