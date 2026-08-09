@@ -564,7 +564,7 @@ p { margin: 0 0 1em; }
   padding: 0;
   font-family: var(--font);
   font-size: 19.3px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1;
   text-decoration: none;
   color: var(--color-btn-link);
