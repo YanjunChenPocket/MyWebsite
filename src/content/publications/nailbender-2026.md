@@ -6,5 +6,5 @@ year: 2026
 order: -2
 paperUrl: "soon"
 previewPlaceholder: "SOON"
-previewNote: "Expected public release · November 2–5, 2026"
+previewNote: "UIST 2026 · November 2–5, 2026"
 ---
