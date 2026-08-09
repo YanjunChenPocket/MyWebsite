@@ -2,7 +2,6 @@
 interface Props {
   title: string;
   authors: string; // may contain **name** for bold
-  authorNote?: string;
   venue: string;
   paperUrl?: string;
   doiUrl?: string;
@@ -64,7 +63,6 @@ const posterUrl = props.previewVideo
   <div>
     <h3 class="entry-title">{props.title}</h3>
     <p class="entry-authors" set:html={authorsHtml} />
-    {props.authorNote && <p class="entry-author-note">{props.authorNote}</p>}
     <p class="entry-venue">{props.venue}</p>
     <div class="entry-links">
       {

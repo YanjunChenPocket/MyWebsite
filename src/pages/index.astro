@@ -27,7 +27,6 @@ const projects = (await getCollection('projects')).sort(
           <PublicationEntry
             title={p.data.title}
             authors={p.data.authors}
-            authorNote={p.data.authorNote}
             venue={p.data.venue}
             paperUrl={p.data.paperUrl}
             doiUrl={p.data.doiUrl}

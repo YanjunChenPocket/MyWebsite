@@ -538,15 +538,6 @@ p { margin: 0 0 1em; }
   font-weight: 700;
 }
 
-.entry-author-note {
-  margin: -0.1rem 0 0.35rem;
-  color: #969696;
-  font-family: var(--font);
-  font-size: 0.82rem;
-  font-style: italic;
-  line-height: 1.4;
-}
-
 .entry-venue {
   font-family: var(--font);
   font-size: 0.95rem;

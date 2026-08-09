@@ -1,7 +1,6 @@
 ---
 title: "Douleur: Creating Pain Sensation with Chemical Stimulant to Enhance User Experience in Virtual Reality"
 authors: "Chutian Jiang*, **Yanjun Chen***, Mingming Fan, Liuping Wang, Luyao Shen, Nianlong Li, Wei Sun, Yu Zhang, Feng Tian, Teng Han"
-authorNote: "* Equal contribution"
 venue: "IMWUT 2021: Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies"
 year: 2021
 order: 5
