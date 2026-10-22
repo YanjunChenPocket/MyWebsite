@@ -741,6 +741,7 @@ a.entry-link:active {
    News sidebar — fixed in the right white space outside the content column
    ========================================================================== */
 .news-sidebar {
+  --news-marker-gutter: 0.8rem;
   position: fixed;
   top: 5.5rem;
   left: calc(50% + var(--max-width) / 2 + 1.25rem);
@@ -772,7 +773,8 @@ a.entry-link:active {
 
 .news-list {
   list-style: none;
-  margin: 0;
+  /* Put the marker gutter in the panel padding so dates align with NEWS. */
+  margin: 0 0 0 calc(-1 * var(--news-marker-gutter));
   padding: 0;
   overflow-y: scroll;
   scrollbar-width: none;
@@ -787,7 +789,7 @@ a.entry-link:active {
   grid-template-columns: 3.8rem 1fr;
   gap: 0 0.5rem;
   margin: 0.15rem 0;
-  padding: 0.5rem 0.55rem 0.5rem 0.8rem;
+  padding: 0.5rem 0.55rem 0.5rem var(--news-marker-gutter);
   overflow: hidden;
   border-radius: 6px;
   transition: transform 180ms ease, box-shadow 180ms ease;
@@ -803,8 +805,9 @@ a.entry-link:active {
   width: 3px;
   border-radius: 999px;
   background: var(--color-btn-link);
+  opacity: 0;
   transform: scaleY(0.75);
-  transition: transform 220ms ease, background 220ms ease;
+  transition: opacity 180ms ease, transform 220ms ease, background 220ms ease;
 }
 
 .news-item::after {
@@ -828,6 +831,7 @@ a.entry-link:active {
 }
 .news-item:hover::before {
   background: #3f8edb;
+  opacity: 1;
   transform: scaleY(1);
 }
 .news-item:hover::after {
