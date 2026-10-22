@@ -2,18 +2,60 @@
 import { news } from '../data/news';
 ---
 
-<aside class="news-sidebar">
-  <p class="news-title">NEWS</p>
-  <ul class="news-list">
+<aside class="news-sidebar" aria-labelledby="news-title">
+  <p class="news-title" id="news-title">NEWS</p>
+  <ul class="news-list" tabindex="0" aria-label="Recent news. Scroll for more.">
     {news.map(item => (
       <li class="news-item">
         <span class="news-date">{item.date}</span>
-        <span class="news-text">
-          {item.url
-            ? <a class="news-link" href={item.url} target="_blank" rel="noopener">{item.text}</a>
-            : item.text}
-        </span>
+        <span class="news-text">{item.text}</span>
       </li>
     ))}
   </ul>
 </aside>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.news-sidebar').forEach(panel => {
+    const list = panel.querySelector<HTMLUListElement>('.news-list');
+    if (!list) return;
+
+    const items = Array.from(list.querySelectorAll<HTMLLIElement>('.news-item'));
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let resetTimer: number | undefined;
+
+    // Measure real rows so the first three fit even when their text wraps.
+    const updateVisibleHeight = () => {
+      const lastVisibleItem = items[Math.min(3, items.length) - 1];
+      if (!lastVisibleItem || list.clientWidth === 0) return;
+
+      const height = lastVisibleItem.getBoundingClientRect().bottom
+        - list.getBoundingClientRect().top + list.scrollTop;
+      list.style.setProperty('--news-visible-height', `${Math.ceil(height)}px`);
+    };
+
+    const cancelReset = () => {
+      window.clearTimeout(resetTimer);
+      resetTimer = undefined;
+    };
+
+    const scheduleReset = () => {
+      cancelReset();
+      resetTimer = window.setTimeout(() => {
+        resetTimer = undefined;
+        // Never interrupt someone reading with the mouse or keyboard.
+        if (panel.matches(':hover') || list.matches(':focus-visible')) return;
+        list.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+      }, 2000);
+    };
+
+    panel.addEventListener('pointerenter', cancelReset);
+    panel.addEventListener('pointerleave', scheduleReset);
+    list.addEventListener('focusin', cancelReset);
+    list.addEventListener('focusout', scheduleReset);
+
+    const resizeObserver = new ResizeObserver(updateVisibleHeight);
+    items.forEach(item => resizeObserver.observe(item));
+    updateVisibleHeight();
+    document.fonts.ready.then(updateVisibleHeight);
+  });
+</script>

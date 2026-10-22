@@ -32,6 +32,15 @@ Everything you might want to edit lives in plain files. **You should never need 
 | Add / edit a publication | `src/content/publications/*.md` (one file per paper) |
 | Add / edit a fun project | `src/content/projects/*.md` |
 | Site colors, fonts, spacing | `src/styles/global.css` (CSS variables at the top) |
+| News items (newest first, plain text) | `src/data/news.ts` |
+
+The desktop News panel fits the latest three items. Scroll inside it to read older news;
+two seconds after the pointer leaves, it smoothly returns to the top. Returning the
+pointer cancels the pending reset, and keyboard focus pauses it. Reduced-motion
+preferences disable the return animation. The blue marker appears only on hover.
+
+Publication buttons use soft coral (PDF), apricot (DOI), and blue (Video), with dark,
+regular-weight labels. Their dimensions remain 80 × 38 px.
 
 ### Adding a new publication
 
@@ -118,7 +127,7 @@ After this, every `git push` to your main branch automatically rebuilds and depl
 
 - **Astro 6** — static site generator. Outputs zero JS by default.
 - **No CSS framework** — plain CSS with custom properties. ~5 KB gzipped.
-- **No client-side JavaScript** — except inline `onmouseover` for video hover previews.
+- **Small client-side scripts** — for interactions such as News sizing and delayed scroll reset.
 - **Total build output** for a site this size: well under 100 KB of HTML/CSS (videos and PDFs excluded).
 
 ## Why this is easier to maintain than WordPress

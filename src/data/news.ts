@@ -1,10 +1,9 @@
 // Edit this file to update the News panel.
 // Add newest items at the top of the array.
-export const news: { date: string; text: string; url?: string }[] = [
+export const news: { date: string; text: string }[] = [
   {
     date: "10/7/2026",
     text: "Gave an invited talk on NailBender at UIST Talks, UIUC HCI Seminar.",
-    url: "https://publish.illinois.edu/hci-talks/october-7-2026-uist-practice-talks/",
   },
   {
     date: "8/9/2026",
