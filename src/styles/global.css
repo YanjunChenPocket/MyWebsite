@@ -554,8 +554,9 @@ p { margin: 0 0 1em; }
 }
 
 .entry-link {
-  --entry-link-bg: #4b6b8f;
-  --entry-link-hover-bg: #3a5574;
+  /* A shared warm terracotta complements the coral and orange hero buttons. */
+  --entry-link-bg: #ad5f47;
+  --entry-link-hover-bg: #914b38;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -572,19 +573,8 @@ p { margin: 0 0 1em; }
   background: var(--entry-link-bg);
   border: 2px solid transparent;
   border-radius: var(--radius);
-  box-shadow: 0 1px 2px rgba(27, 43, 62, 0.08);
+  box-shadow: 0 1px 2px rgba(94, 49, 35, 0.08);
   transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
-}
-
-/* Muted blue, violet, and teal distinguish each publication resource. */
-.entry-link-doi {
-  --entry-link-bg: #6c6391;
-  --entry-link-hover-bg: #574e79;
-}
-
-.entry-link-video {
-  --entry-link-bg: #39766d;
-  --entry-link-hover-bg: #2b5e56;
 }
 
 .entry-link-icon {
@@ -607,7 +597,7 @@ a.entry-link:hover,
 a.entry-link:focus-visible {
   background: var(--entry-link-hover-bg);
   color: #ffffff;
-  box-shadow: 0 3px 9px rgba(27, 43, 62, 0.16);
+  box-shadow: 0 3px 9px rgba(94, 49, 35, 0.16);
   transform: translateY(-1px);
 }
 a.entry-link:focus-visible {
@@ -619,9 +609,9 @@ a.entry-link:active {
   transform: translateY(0);
 }
 .entry-link-disabled {
-  color: #718096;
-  background: #e9edf2;
-  border-color: #dde4ec;
+  color: #8a7b72;
+  background: #f1ece8;
+  border-color: #e6ddd7;
   box-shadow: none;
   cursor: default;
   pointer-events: none;
