@@ -101,8 +101,7 @@
   --color-btn-cv-hover:     #ffb45a;
   --color-btn-email:        #ff5a5a;
   --color-btn-email-hover:  #ff8888;
-  --color-btn-link:         #68a9ec;   /* paper / doi / video */
-  --color-btn-link-hover:   #68a9ec;
+  --color-btn-link:         #68a9ec;   /* scholar / news accents */
   --color-btn-scholar-hover:#5ec8ff;
 
   --font: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -555,6 +554,8 @@ p { margin: 0 0 1em; }
 }
 
 .entry-link {
+  --entry-link-bg: #4b6b8f;
+  --entry-link-hover-bg: #3a5574;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -567,11 +568,23 @@ p { margin: 0 0 1em; }
   font-weight: 400;
   line-height: 1;
   text-decoration: none;
-  color: var(--color-btn-link);
-  background: #ffffff;
-  border: 2px solid var(--color-btn-link);
+  color: #ffffff;
+  background: var(--entry-link-bg);
+  border: 2px solid transparent;
   border-radius: var(--radius);
-  transition: background var(--transition), color var(--transition);
+  box-shadow: 0 1px 2px rgba(27, 43, 62, 0.08);
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+/* Muted blue, violet, and teal distinguish each publication resource. */
+.entry-link-doi {
+  --entry-link-bg: #6c6391;
+  --entry-link-hover-bg: #574e79;
+}
+
+.entry-link-video {
+  --entry-link-bg: #39766d;
+  --entry-link-hover-bg: #2b5e56;
 }
 
 .entry-link-icon {
@@ -590,13 +603,26 @@ p { margin: 0 0 1em; }
   stroke: none;
 }
 
-.entry-link:hover {
-  background: var(--color-btn-link-hover);
+a.entry-link:hover,
+a.entry-link:focus-visible {
+  background: var(--entry-link-hover-bg);
   color: #ffffff;
+  box-shadow: 0 3px 9px rgba(27, 43, 62, 0.16);
+  transform: translateY(-1px);
+}
+a.entry-link:focus-visible {
+  outline: 2px solid var(--entry-link-bg);
+  outline-offset: 3px;
+}
+a.entry-link:active {
+  box-shadow: none;
+  transform: translateY(0);
 }
 .entry-link-disabled {
-  color: #c8c8c8;
-  border-color: #c8c8c8;
+  color: #718096;
+  background: #e9edf2;
+  border-color: #dde4ec;
+  box-shadow: none;
   cursor: default;
   pointer-events: none;
 }
@@ -831,6 +857,10 @@ p { margin: 0 0 1em; }
 .news-item:hover .news-date { color: #2f7fcf; }
 
 @media (prefers-reduced-motion: reduce) {
+  .entry-link { transition: none; }
+  a.entry-link:hover,
+  a.entry-link:focus-visible { transform: none; }
+
   .news-item,
   .news-item::before,
   .news-item::after,
