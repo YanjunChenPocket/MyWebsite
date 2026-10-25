@@ -1,0 +1,13 @@
+{
+  "archivedOn": "2026-10-25",
+  "timeZone": "America/Chicago",
+  "sourceCommit": "2b6979bc72ccc873a0c183b3348632da551b5d0c",
+  "reason": "保存更新前的个人简介、首页排版和 NailBender 预览日期，以便日后恢复。",
+  "format": "UTF-8 source snapshots; line endings normalized to LF.",
+  "files": {
+    "src/config.ts": "config.ts.txt",
+    "src/components/Hero.astro": "Hero.astro.txt",
+    "src/content/publications/nailbender-2026.md": "nailbender-2026.md.txt"
+  },
+  "restoreNotes": "如只恢复旧简介，将 config.ts.txt 中的 hero.bio 与 hero.interests 复制回 src/config.ts，并将 hero.background 清空。若要恢复整个旧版排版，可参考 Hero.astro.txt；不要覆盖之后新增的无关内容。原始版本也保留在 sourceCommit 指定的 Git 提交中。"
+}

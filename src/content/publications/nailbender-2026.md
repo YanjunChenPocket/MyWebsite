@@ -8,5 +8,5 @@ paperUrl: "soon"
 videoUrl: "https://www.youtube.com/watch?v=PtVEMRXrico"
 previewImage: "/uploads/NailBender-soon.png"
 previewPlaceholder: "SOON"
-previewNote: "UIST 2026 · November 2–5, 2026"
+previewNote: "November 4, 2026 · 2:00–2:12 PM EST"
 ---

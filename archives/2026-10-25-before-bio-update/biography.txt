@@ -1,0 +1,9 @@
+Previous website biography
+Archived: October 25, 2026 (America/Chicago)
+Source commit: 2b6979bc72ccc873a0c183b3348632da551b5d0c
+
+Hi, I am Yanjun Chen.
+
+I am a third-year Ph.D. student in Electrical and Computer Engineering at the University of Illinois Urbana-Champaign, working with Prof. Craig Shultz in the Interactive Display Lab. Previously, I served as a Research Assistant at the Institute of Software, Chinese Academy of Sciences, under the guidance of Prof. Teng Han. I received my B.E. in Computer Science and Technology from Chengdu University of Information Technology, China.
+
+My research interests lie in the area of human-computer interaction (HCI). I am currently exploring haptic feedback and novel sensing technologies, including compact actuators/sensors, wearables, and interactive interfaces.

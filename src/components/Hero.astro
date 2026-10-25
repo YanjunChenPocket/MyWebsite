@@ -36,6 +36,7 @@ const { hero } = site;
       <h1 class="hero-name">{hero.name}</h1>
       <p class="hero-bio" set:html={hero.bio} />
       <p class="hero-bio">{hero.interests}</p>
+      {hero.background && <p class="hero-bio" set:html={hero.background} />}
       <div class="hero-links">
         <div class="hero-action-links">
           <a href={`mailto:${hero.email}`} class="hero-link-action hero-link-email" title="Send Email">

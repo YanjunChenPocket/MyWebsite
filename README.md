@@ -42,6 +42,22 @@ preferences disable the return animation. The blue marker appears only on hover.
 Publication buttons use soft coral (PDF), apricot (DOI), and blue (Video), with dark,
 regular-weight labels. Their dimensions remain 80 × 38 px.
 
+### Biography archive
+
+Before the October 25, 2026 refresh, the original biography, Hero component, and
+NailBender preview date were saved in
+[`archives/2026-10-25-before-bio-update/`](archives/2026-10-25-before-bio-update/).
+These source snapshots are also tracked in Git and are not served by the website.
+`biography.txt` is a readable plain-text copy of the previous introduction.
+`manifest.json` records the original commit, source-file mapping, and recovery notes.
+
+The current introduction has three fields in `src/config.ts`: `hero.bio` (current
+position), `hero.interests` (research), and `hero.background` (previous experience).
+To restore only the old biography, copy `hero.bio` and `hero.interests` from the
+archived `config.ts.txt` and set `hero.background` to an empty string. Preserve any
+unrelated changes made since the archive. The archived `Hero.astro.txt` also retains
+the original two-paragraph layout if it is needed later.
+
 ### Adding a new publication
 
 Create a new file in `src/content/publications/`, e.g. `00-new-paper.md`:
