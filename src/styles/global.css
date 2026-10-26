@@ -249,10 +249,10 @@ p { margin: 0 0 1em; }
 .language-switch {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  flex: 0 0 112px;
-  width: 112px;
-  height: 40px;
+  grid-template-columns: 1fr 12px 1fr;
+  flex: 0 0 100px;
+  width: 100px;
+  height: 36px;
   padding: 4px;
   border-radius: 999px;
   background: #f0f3f7;
@@ -264,7 +264,7 @@ p { margin: 0 0 1em; }
   position: absolute;
   z-index: -1;
   inset: 4px auto 4px 4px;
-  width: calc(50% - 4px);
+  width: calc((100% - 20px) / 2);
   border-radius: inherit;
   background: #d7e7fa;
   box-shadow: 0 1px 3px rgba(36, 75, 105, 0.1);
@@ -272,7 +272,18 @@ p { margin: 0 0 1em; }
   pointer-events: none;
 }
 .language-switch[data-language='zh-CN'] .language-switch-indicator {
-  transform: translateX(100%);
+  transform: translateX(calc(100% + 12px));
+}
+
+.language-switch-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #919daa;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .language-switch a {
@@ -295,6 +306,16 @@ p { margin: 0 0 1em; }
 .language-switch a:focus-visible {
   outline: 2px solid #387bbd;
   outline-offset: 3px;
+}
+
+/* With the desktop News column visible, the switch has its own right corner.
+   It leaves the centered Home / Publication navigation completely unchanged. */
+@media (min-width: 1380px) {
+  .language-switch {
+    position: absolute;
+    top: 20px;
+    left: calc(50% + var(--max-width) / 2 + 1.25rem + min(350px, (100vw - var(--max-width)) / 2 - 2.5rem) - 100px);
+  }
 }
 
 @media (max-width: 768px) {

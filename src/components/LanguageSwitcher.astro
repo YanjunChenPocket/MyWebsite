@@ -19,6 +19,7 @@ const { locale } = Astro.props;
     aria-label="English"
     aria-current={locale === 'en' ? 'true' : undefined}
   >EN</a>
+  <span class="language-switch-divider" aria-hidden="true">/</span>
   <a
     href="https://chen-yanjun.cn/"
     lang="zh-CN"
@@ -26,7 +27,7 @@ const { locale } = Astro.props;
     data-language="zh-CN"
     aria-label="中文"
     aria-current={locale === 'zh-CN' ? 'true' : undefined}
-  >中文</a>
+  >中</a>
 </nav>
 
 <script>
