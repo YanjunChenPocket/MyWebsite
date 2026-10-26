@@ -144,6 +144,12 @@ test('pre-rendered languages have correct content, metadata, and shared links', 
   assert.match(english, /Prof. Teng Han/);
   assert.match(english, /href="http:\/\/english.is.cas.cn\/"/);
   assert.match(chinese, /下载简历（英文）/);
+  assert.match(chinese, /<span>论文<\/span>/);
+  assert.match(chinese, /<span>原文<\/span>/);
+  assert.match(chinese, /查看出版页面（DOI）/);
+  assert.doesNotMatch(chinese, /<span>(pdf|doi)<\/span>/);
+  assert.match(english, /<span>pdf<\/span>/);
+  assert.match(english, /<span>doi<\/span>/);
   assert.match(english, /November 4, 2026 · 2:00–2:12 PM EST/);
   assert.match(chinese, /2026年11月4日 · 14:00–14:12 EST（美东标准时间）/);
   assert.match(chinese, /NailBender: Exploring Nail Flexion for Haptic Input and Output/);
