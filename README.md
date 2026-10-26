@@ -46,11 +46,13 @@ Everything you might want to edit lives in plain files. **You should never need 
   Chinese biography and News use 陈彦君 and 韩腾. The institute link uses its
   Chinese homepage. The CV remains the existing English PDF; its Chinese tooltip
   says so. Chinese resource buttons remain 论文 / 原文 / 视频.
-- The EN / 中 switch slides between the two domains, preserving the current
-  section anchor. On wide desktop screens it sits independently at the upper
-  right, aligned above News, without moving Home / Publication. Narrow screens
-  keep it in the compact header. It also supports keyboard navigation, native
-  links without JavaScript, and reduced-motion preferences.
+- The language switch uses flat EN / 中 text with a short sliding underline,
+  without a rounded pill, colored background, or shadow. Switching always opens
+  the other domain's homepage at the top; section anchors are never copied.
+  On wide desktop screens it sits independently at the upper right, aligned
+  above News, without moving Home / Publication. Narrow screens keep it in the
+  compact header. It supports keyboard navigation, native links without
+  JavaScript, and reduced-motion preferences.
 - Edit both `text` and `textZh` for each News item. Project awards can use
   `awardZh`; preview captions can use `previewNoteZh`.
 - Preview Chinese locally at `/zh/`. `worker/localized.js` handles domain routing,
