@@ -4,7 +4,7 @@ export const news: { date: string; text: string; textZh: string }[] = [
   {
     date: "10/7/2026",
     text: "Gave an invited talk on NailBender at UIST Talks, UIUC HCI Seminar.",
-    textZh: "受邀在 UIUC 人机交互研讨会的 UIST Talks 活动中介绍 NailBender。",
+    textZh: "在 UIUC 人机交互研讨会的 UIST Talks 活动中发表 NailBender 主题演讲。",
   },
   {
     date: "8/9/2026",

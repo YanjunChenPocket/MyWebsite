@@ -215,6 +215,12 @@ p { margin: 0 0 1em; }
 }
 .brand:hover { color: var(--color-text); }
 
+html:lang(zh-CN) .brand {
+  font-size: 2rem;
+  line-height: 52px;
+  letter-spacing: 0.12em;
+}
+
 .brand-logo {
   height: 52px;
   width: auto;

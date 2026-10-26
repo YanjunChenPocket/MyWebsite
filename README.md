@@ -40,8 +40,11 @@ Everything you might want to edit lives in plain files. **You should never need 
 - `chen-yanjun.com` remains the English homepage.
 - `chen-yanjun.cn` and `www.chen-yanjun.cn` serve the pre-rendered Chinese homepage
   at the root URL. No client-side translation or language flash is needed.
-- Both versions share publication titles, authors, venues, assets, and resource
-  links. The CV remains the existing English PDF; its Chinese tooltip says so.
+- Both versions share publication titles, venues, assets, and resource links.
+  Chinese pages use the owner-confirmed names 陈彦君 and 韩腾, including author
+  lists; all other author names and contribution markers are preserved. The
+  institute link uses its Chinese homepage. The CV remains the existing English
+  PDF; its Chinese tooltip says so.
 - Edit both `text` and `textZh` for each News item. Publication and project awards
   can use `awardZh`; preview captions can use `previewNoteZh`.
 - Preview Chinese locally at `/zh/`. `worker/localized.js` handles domain routing,

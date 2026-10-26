@@ -2,7 +2,7 @@
 import { getSite, getMessages, type Locale } from '../i18n';
 interface Props { locale?: Locale; }
 const { locale = 'en' } = Astro.props;
-const { hero } = getSite(locale);
+const { hero, brand } = getSite(locale);
 const ui = getMessages(locale);
 ---
 
@@ -34,7 +34,7 @@ const ui = getMessages(locale);
 
 <section id="home" class="section">
   <div class="container hero">
-    <img src={hero.photo} alt="Yanjun Chen" class="hero-photo" />
+    <img src={hero.photo} alt={brand} class="hero-photo" />
     <div>
       <h1 class="hero-name">{hero.name}</h1>
       <p class="hero-bio" set:html={hero.bio} />

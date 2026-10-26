@@ -135,12 +135,25 @@ test('pre-rendered languages have correct content, metadata, and shared links', 
   assert.match(chinese, /rel="canonical" href="https:\/\/chen-yanjun.cn"/);
   assert.match(english, /My research focuses on human-computer interaction/);
   assert.match(chinese, /我的研究方向是人机交互/);
+  assert.match(chinese, /<title>陈彦君<\/title>/);
+  assert.match(chinese, /你好，我是陈彦君。/);
+  assert.match(chinese, /韩腾教授/);
+  assert.match(chinese, /href="https:\/\/www.iscas.ac.cn\/"/);
+  assert.doesNotMatch(chinese, /english.is.cas.cn/);
+  assert.match(english, /Hi, I am Yanjun Chen./);
+  assert.match(english, /Prof. Teng Han/);
+  assert.match(english, /href="http:\/\/english.is.cas.cn\/"/);
   assert.match(chinese, /下载简历（英文）/);
   assert.match(english, /November 4, 2026 · 2:00–2:12 PM EST/);
   assert.match(chinese, /2026年11月4日 · 14:00–14:12 EST（美东标准时间）/);
   assert.match(chinese, /NailBender: Exploring Nail Flexion for Haptic Input and Output/);
   assert.match(chinese, /Chutian Jiang\*/);
+  assert.match(chinese, /<strong>陈彦君<\/strong>\*/);
+  assert.match(english, /<strong>Yanjun Chen<\/strong>\*/);
+  assert.doesNotMatch(chinese, /Yanjun Chen|Teng Han/);
   assert.match(chinese, /2026.10.07/);
+  assert.match(chinese, /发表 NailBender 主题演讲/);
+  assert.doesNotMatch(chinese, /活动中介绍 NailBender/);
   for (const html of [english, chinese]) {
     assert.equal([...html.matchAll(/<p class="hero-bio"/g)].length, 3);
     assert.equal([...html.matchAll(/<li class="news-item"/g)].length, 5);
@@ -148,6 +161,8 @@ test('pre-rendered languages have correct content, metadata, and shared links', 
     const news = html.match(/<aside class="news-sidebar"[\s\S]*?<\/aside>/)[0];
     assert.doesNotMatch(news, /<a\s/);
   }
-  const links = html => [...html.matchAll(/<a [^>]*href="([^"]+)"/g)].map(match => match[1]).sort();
+  // The institute link intentionally uses its Chinese homepage on .cn.
+  const links = html => [...html.matchAll(/<a [^>]*href="([^"]+)"/g)]
+    .map(match => match[1].replace('https://www.iscas.ac.cn/', 'http://english.is.cas.cn/')).sort();
   assert.deepEqual(links(english), links(chinese));
 });
