@@ -71,7 +71,10 @@ const { locale } = Astro.props;
     });
 
     // A back/forward-cache restore must reflect this page's actual language.
-    window.addEventListener('pageshow', () => {
+    window.addEventListener('pageshow', (event) => {
+      // The initial load can finish after a user has already clicked a link.
+      // Only a cache restore should cancel a pending transition and reset it.
+      if (!event.persisted) return;
       window.clearTimeout(pendingNavigation);
       switcher.dataset.language = originalLanguage;
       syncLinks();
