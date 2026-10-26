@@ -1,14 +1,18 @@
 ---
 import { news } from '../data/news';
+import { getMessages, formatNewsDate, type Locale } from '../i18n';
+interface Props { locale?: Locale; }
+const { locale = 'en' } = Astro.props;
+const ui = getMessages(locale);
 ---
 
 <aside class="news-sidebar" aria-labelledby="news-title">
-  <p class="news-title" id="news-title">NEWS</p>
-  <ul class="news-list" tabindex="0" aria-label="Recent news. Scroll for more.">
+  <p class="news-title" id="news-title">{ui.news}</p>
+  <ul class="news-list" tabindex="0" aria-label={ui.newsScroll}>
     {news.map(item => (
       <li class="news-item">
-        <span class="news-date">{item.date}</span>
-        <span class="news-text">{item.text}</span>
+        <span class="news-date">{formatNewsDate(item.date, locale)}</span>
+        <span class="news-text">{locale === 'zh-CN' ? item.textZh : item.text}</span>
       </li>
     ))}
   </ul>

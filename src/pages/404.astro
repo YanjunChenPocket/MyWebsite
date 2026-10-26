@@ -1,13 +1,5 @@
 ---
-import Base from '../layouts/Base.astro';
+import NotFoundPage from '../components/NotFoundPage.astro';
 ---
 
-<Base title="Page Not Found">
-  <section class="section">
-    <div class="container" style="text-align: center; padding: 6rem 1.5rem;">
-      <h1 style="font-size: 4rem; font-weight: 700; margin-bottom: 1rem;">404</h1>
-      <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Page not found.</p>
-      <a href="/" class="entry-link">← Back to home</a>
-    </div>
-  </section>
-</Base>
+<NotFoundPage locale="en" />

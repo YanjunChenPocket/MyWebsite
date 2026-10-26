@@ -1,6 +1,9 @@
 ---
-import { site } from '../config';
-const { hero } = site;
+import { getSite, getMessages, type Locale } from '../i18n';
+interface Props { locale?: Locale; }
+const { locale = 'en' } = Astro.props;
+const { hero } = getSite(locale);
+const ui = getMessages(locale);
 ---
 
 <script>
@@ -39,21 +42,21 @@ const { hero } = site;
       {hero.background && <p class="hero-bio" set:html={hero.background} />}
       <div class="hero-links">
         <div class="hero-action-links">
-          <a href={`mailto:${hero.email}`} class="hero-link-action hero-link-email" title="Send Email">
+          <a href={`mailto:${hero.email}`} class="hero-link-action hero-link-email" title={ui.emailTitle}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
             </svg>
-            <span>Email</span>
+            <span>{ui.email}</span>
           </a>
-          <a href={hero.cvUrl} class="hero-link-action hero-link-cv" target="_blank" rel="noopener" title="Download CV">
+          <a href={hero.cvUrl} class="hero-link-action hero-link-cv" target="_blank" rel="noopener" title={ui.cvTitle}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm1 7V4.5L19.5 9H15zM8 13h8v2H8v-2zm0 4h8v2H8v-2z" />
             </svg>
-            <span>CV</span>
+            <span>{ui.cv}</span>
           </a>
         </div>
         <div class="hero-social-links">
-          <a href={hero.googleScholarUrl} class="hero-link-social hero-link-scholar" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
+          <a href={hero.googleScholarUrl} class="hero-link-social hero-link-scholar" target="_blank" rel="noopener" title={ui.scholar} aria-label={ui.scholar}>
             <img src="/uploads/icons8-google-scholar.svg" alt="" />
           </a>
           <a href={hero.linkedinUrl} class="hero-link-social hero-link-linkedin" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">

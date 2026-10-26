@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { getMessages, type Locale } from '../i18n';
+interface Props { locale?: Locale; }
+const { locale = 'en' } = Astro.props;
+const ui = getMessages(locale);
+---
+
+<Base title={ui.notFoundTitle} locale={locale}>
+  <section class="section">
+    <div class="container" style="text-align: center; padding: 6rem 1.5rem;">
+      <h1 style="font-size: 4rem; font-weight: 700; margin-bottom: 1rem;">404</h1>
+      <p style="color: var(--color-text-muted); margin-bottom: 2rem;">{ui.notFound}</p>
+      <a href="/" class="entry-link" style="width: auto; padding: 0 1rem;">{ui.backHome}</a>
+    </div>
+  </section>
+</Base>

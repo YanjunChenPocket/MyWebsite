@@ -9,4 +9,5 @@ videoUrl: "https://www.youtube.com/watch?v=PtVEMRXrico"
 previewImage: "/uploads/NailBender-soon.png"
 previewPlaceholder: "SOON"
 previewNote: "November 4, 2026 · 2:00–2:12 PM EST"
+previewNoteZh: "2026年11月4日 · 14:00–14:12 EST（美东标准时间）"
 ---

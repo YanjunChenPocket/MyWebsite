@@ -16,7 +16,9 @@ const publications = defineCollection({
     previewImage: z.string().optional(),
     previewPlaceholder: z.string().optional(),
     previewNote: z.string().optional(),
+    previewNoteZh: z.string().optional(),
     award: z.string().optional(),
+    awardZh: z.string().optional(),
   }),
 });
 
@@ -29,6 +31,7 @@ const projects = defineCollection({
     order: z.number(),
     image: z.string(),
     award: z.string().optional(),
+    awardZh: z.string().optional(),
     projectUrl: z.string().optional(),
   }),
 });

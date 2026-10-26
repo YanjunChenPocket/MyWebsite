@@ -5,5 +5,6 @@ year: 2026
 order: 0
 image: "/uploads/p-haptics2026.mp4"
 award: "🏆 Distinguished Demonstration Award"
+awardZh: "🏆 杰出演示奖"
 projectUrl: "https://www.youtube.com/watch?v=B02Yt4sOTu8"
 ---

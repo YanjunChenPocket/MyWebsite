@@ -1,5 +1,5 @@
-// All site-wide content lives here. Edit this file to update the bio,
-// title, navigation, or links — no need to touch component code.
+// English site-wide content lives here; Chinese copy is in src/i18n.ts.
+// Edit the bio, title, navigation, or links without changing component code.
 
 export const site = {
   // <head> metadata

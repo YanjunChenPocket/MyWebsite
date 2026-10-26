@@ -1,0 +1,10 @@
+{
+  "archivedOn": "2026-10-25",
+  "timeZone": "America/Chicago",
+  "sourceCommit": "f57925eefa5df3521280326feb97269d80e80ab9",
+  "reason": "中文版上线前的英文简介与网站版本。此前 .com 和 .cn 均显示英文。",
+  "files": {
+    "src/config.ts": "config.ts.txt"
+  },
+  "restoreNotes": "本目录保留中文化之前的英文简介；完整页面、样式、部署配置都可从 sourceCommit 指定的 Git 版本恢复。只恢复所需内容，保留后续无关修改。worker/index.js 原有的本地修改未纳入本次更改。"
+}

@@ -33,6 +33,27 @@ Everything you might want to edit lives in plain files. **You should never need 
 | Add / edit a fun project | `src/content/projects/*.md` |
 | Site colors, fonts, spacing | `src/styles/global.css` (CSS variables at the top) |
 | News items (newest first, plain text) | `src/data/news.ts` |
+| Chinese biography and interface labels | `src/i18n.ts` |
+
+### English and Chinese versions
+
+- `chen-yanjun.com` remains the English homepage.
+- `chen-yanjun.cn` and `www.chen-yanjun.cn` serve the pre-rendered Chinese homepage
+  at the root URL. No client-side translation or language flash is needed.
+- Both versions share publication titles, authors, venues, assets, and resource
+  links. The CV remains the existing English PDF; its Chinese tooltip says so.
+- Edit both `text` and `textZh` for each News item. Publication and project awards
+  can use `awardZh`; preview captions can use `previewNoteZh`.
+- Preview Chinese locally at `/zh/`. `worker/localized.js` handles domain routing,
+  then delegates to the existing media worker; `wrangler.jsonc` selects this entry.
+- `npm test` builds both languages and checks routing, metadata, links, and 404s.
+
+The English-only baseline is recorded in
+[`archives/2026-10-25-before-chinese-version/`](archives/2026-10-25-before-chinese-version/).
+Its manifest identifies the complete previous Git revision for recovery.
+
+Domain routing uses the existing Cloudflare Static Assets binding; see the
+[Cloudflare binding documentation](https://developers.cloudflare.com/workers/static-assets/binding/).
 
 The desktop News panel fits the latest three items. Scroll inside it to read older news;
 two seconds after the pointer leaves, it smoothly returns to the top. Returning the

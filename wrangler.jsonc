@@ -2,7 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mywebsite",
   "compatibility_date": "2025-04-01",
-  "main": "worker/index.js",
+  "main": "worker/localized.js",
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",

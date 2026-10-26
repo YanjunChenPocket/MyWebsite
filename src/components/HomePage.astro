@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Hero from './Hero.astro';
+import News from './News.astro';
+import PublicationEntry from './PublicationEntry.astro';
+import ProjectEntry from './ProjectEntry.astro';
+import { getMessages, type Locale } from '../i18n';
+
+interface Props { locale?: Locale; }
+const { locale = 'en' } = Astro.props;
+const ui = getMessages(locale);
+const isChinese = locale === 'zh-CN';
+
+// Pull all publications and sort by `order` field (ascending = newest first)
+const publications = (await getCollection('publications')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Base locale={locale}>
+  <Hero locale={locale} />
+
+  <section id="publication" class="section">
+    <div class="container">
+      <h2 class="section-title">{ui.publications}</h2>
+      {
+        publications.map((p) => (
+          <PublicationEntry
+            locale={locale}
+            title={p.data.title}
+            authors={p.data.authors}
+            venue={p.data.venue}
+            paperUrl={p.data.paperUrl}
+            doiUrl={p.data.doiUrl}
+            videoUrl={p.data.videoUrl}
+            previewVideo={p.data.previewVideo}
+            previewImage={p.data.previewImage}
+            previewPlaceholder={p.data.previewPlaceholder}
+            previewNote={isChinese ? p.data.previewNoteZh ?? p.data.previewNote : p.data.previewNote}
+            award={isChinese ? p.data.awardZh ?? p.data.award : p.data.award}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title">{ui.demonstrations}</h2>
+      <div class="projects-grid">
+        {
+          projects.map((p) => (
+            <ProjectEntry
+              title={p.data.title}
+              venue={p.data.venue}
+              image={p.data.image}
+              award={isChinese ? p.data.awardZh ?? p.data.award : p.data.award}
+              projectUrl={p.data.projectUrl}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <News locale={locale} />
+</Base>
