@@ -1,5 +1,5 @@
 ---
-import { getMessages, localizeAuthors, type Locale } from '../i18n';
+import { getMessages, type Locale } from '../i18n';
 
 interface Props {
   locale?: Locale;
@@ -19,8 +19,9 @@ interface Props {
 const props = Astro.props;
 const ui = getMessages(props.locale);
 
-// Convert **text** to <strong>text</strong> for the author line
-const authorsHtml = localizeAuthors(props.authors, props.locale).replace(
+// Keep the published English / romanized author names in both languages.
+// Convert **text** to <strong>text</strong> without changing contribution stars.
+const authorsHtml = props.authors.replace(
   /\*\*(.+?)\*\*/g,
   '<strong>$1</strong>'
 );

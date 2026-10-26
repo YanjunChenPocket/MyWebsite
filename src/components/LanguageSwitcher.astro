@@ -1,0 +1,79 @@
+---
+import type { Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+---
+
+<nav
+  class="language-switch"
+  aria-label={locale === 'zh-CN' ? '切换语言' : 'Switch language'}
+  data-language={locale}
+>
+  <span class="language-switch-indicator" aria-hidden="true"></span>
+  <a
+    href="https://chen-yanjun.com/"
+    lang="en"
+    hreflang="en"
+    data-language="en"
+    aria-label="English"
+    aria-current={locale === 'en' ? 'true' : undefined}
+  >EN</a>
+  <a
+    href="https://chen-yanjun.cn/"
+    lang="zh-CN"
+    hreflang="zh-CN"
+    data-language="zh-CN"
+    aria-label="中文"
+    aria-current={locale === 'zh-CN' ? 'true' : undefined}
+  >中文</a>
+</nav>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.language-switch').forEach((switcher) => {
+    const originalLanguage = switcher.dataset.language;
+    const links = switcher.querySelectorAll<HTMLAnchorElement>('a[data-language]');
+    let pendingNavigation: number | undefined;
+
+    // Switching at a section keeps the reader at that section on the other site.
+    const syncLinks = () => {
+      links.forEach((link) => {
+        const destination = new URL(link.href);
+        destination.hash = window.location.hash;
+        link.href = destination.href;
+      });
+    };
+    syncLinks();
+    window.addEventListener('hashchange', syncLinks);
+
+    switcher.addEventListener('click', (event) => {
+      // Preserve native open-in-new-tab / copy-link behavior and real hrefs.
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey ||
+          event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = (event.target as Element).closest<HTMLAnchorElement>('a[data-language]');
+      if (!link || !switcher.contains(link)) return;
+
+      window.clearTimeout(pendingNavigation);
+      if (link.dataset.language === originalLanguage) {
+        event.preventDefault();
+        switcher.dataset.language = originalLanguage;
+        return;
+      }
+
+      switcher.dataset.language = link.dataset.language;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      event.preventDefault();
+      pendingNavigation = window.setTimeout(() => {
+        window.location.assign(link.href);
+      }, 200);
+    });
+
+    // A back/forward-cache restore must reflect this page's actual language.
+    window.addEventListener('pageshow', () => {
+      window.clearTimeout(pendingNavigation);
+      switcher.dataset.language = originalLanguage;
+      syncLinks();
+    });
+  });
+</script>

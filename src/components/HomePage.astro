@@ -42,7 +42,7 @@ const projects = (await getCollection('projects')).sort(
             previewImage={p.data.previewImage}
             previewPlaceholder={p.data.previewPlaceholder}
             previewNote={isChinese ? p.data.previewNoteZh ?? p.data.previewNote : p.data.previewNote}
-            award={isChinese ? p.data.awardZh ?? p.data.award : p.data.award}
+            award={p.data.award}
           />
         ))
       }

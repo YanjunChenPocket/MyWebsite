@@ -154,13 +154,18 @@ test('pre-rendered languages have correct content, metadata, and shared links', 
   assert.match(chinese, /2026年11月4日 · 14:00–14:12 EST（美东标准时间）/);
   assert.match(chinese, /NailBender: Exploring Nail Flexion for Haptic Input and Output/);
   assert.match(chinese, /Chutian Jiang\*/);
-  assert.match(chinese, /<strong>陈彦君<\/strong>\*/);
+  assert.match(chinese, /<strong>Yanjun Chen<\/strong>\*/);
   assert.match(english, /<strong>Yanjun Chen<\/strong>\*/);
-  assert.doesNotMatch(chinese, /Yanjun Chen|Teng Han/);
+  const citationFields = html => [...html.matchAll(/<(?:h3|p) class="entry-(?:title|authors|venue|award)">([\s\S]*?)<\/(?:h3|p)>/g)]
+    .map(match => match[0]);
+  assert.ok(citationFields(chinese).length > 0);
+  assert.deepEqual(citationFields(chinese), citationFields(english));
+  assert.doesNotMatch(citationFields(chinese).join(''), /陈彦君|韩腾/);
   assert.match(chinese, /2026.10.07/);
   assert.match(chinese, /发表 NailBender 主题演讲/);
   assert.doesNotMatch(chinese, /活动中介绍 NailBender/);
   for (const html of [english, chinese]) {
+    assert.match(html, /<img src="\/uploads\/title_LOGO.png" alt="Yanjun Chen" class="brand-logo"/);
     assert.equal([...html.matchAll(/<p class="hero-bio"/g)].length, 3);
     assert.equal([...html.matchAll(/<li class="news-item"/g)].length, 5);
     assert.match(html, /hreflang="zh-CN" href="https:\/\/chen-yanjun.cn\/"/);
@@ -171,4 +176,17 @@ test('pre-rendered languages have correct content, metadata, and shared links', 
   const links = html => [...html.matchAll(/<a [^>]*href="([^"]+)"/g)]
     .map(match => match[1].replace('https://www.iscas.ac.cn/', 'http://english.is.cas.cn/')).sort();
   assert.deepEqual(links(english), links(chinese));
+});
+
+test('both headers include accessible language links with the correct selected language', async () => {
+  for (const [path, locale] of [['../dist/index.html', 'en'], ['../dist/zh/index.html', 'zh-CN']]) {
+    const html = await readFile(new URL(path, import.meta.url), 'utf8');
+    const languageSwitch = html.match(/<nav class="language-switch"[\s\S]*?<\/nav>/)[0];
+    assert.match(languageSwitch, new RegExp(`data-language="${locale}"`));
+    assert.match(languageSwitch, /href="https:\/\/chen-yanjun.com\/" lang="en" hreflang="en"/);
+    assert.match(languageSwitch, /href="https:\/\/chen-yanjun.cn\/" lang="zh-CN" hreflang="zh-CN"/);
+    assert.match(languageSwitch, new RegExp(`data-language="${locale}" aria-label="[^"]+" aria-current="true"`));
+    assert.equal([...languageSwitch.matchAll(/aria-current="true"/g)].length, 1);
+    assert.match(languageSwitch, /class="language-switch-indicator" aria-hidden="true"/);
+  }
 });

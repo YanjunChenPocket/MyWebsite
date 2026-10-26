@@ -5,8 +5,6 @@ export type Locale = 'en' | 'zh-CN';
 const chineseSite = {
   ...site,
   title: '陈彦君',
-  brand: '陈彦君',
-  logoImage: '',
   description: '陈彦君，伊利诺伊大学厄巴纳-香槟分校电气与计算机工程专业博士三年级学生，研究方向为人机交互、触觉技术与可穿戴感知。',
   url: 'https://chen-yanjun.cn',
   nav: [
@@ -52,13 +50,6 @@ export function getSite(locale: Locale = 'en') {
 
 export function getMessages(locale: Locale = 'en') {
   return messages[locale];
-}
-
-// Use only Chinese names explicitly supplied by the site owner.
-// Preserve all other author names, ordering, bold markers, and contribution stars.
-export function localizeAuthors(authors: string, locale: Locale = 'en') {
-  if (locale === 'en') return authors;
-  return authors.replace(/\bYanjun Chen\b/g, '陈彦君').replace(/\bTeng Han\b/g, '韩腾');
 }
 
 export function formatNewsDate(date: string, locale: Locale) {
