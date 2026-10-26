@@ -80,7 +80,7 @@ test('reduced motion and modified clicks preserve native homepage navigation', a
   }
 });
 
-test('history restoration resets the indicator and cancels stale navigation', async () => {
+test('history restoration resets the selected language and cancels stale navigation', async () => {
   const ui = await createSwitch('en');
   ui.click('zh-CN');
   assert.equal(ui.control.dataset.language, 'zh-CN');

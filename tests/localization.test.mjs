@@ -187,7 +187,7 @@ test('both headers include accessible language links with the correct selected l
     assert.match(languageSwitch, /href="https:\/\/chen-yanjun.cn\/" lang="zh-CN" hreflang="zh-CN"/);
     assert.match(languageSwitch, new RegExp(`data-language="${locale}" aria-label="[^"]+" aria-current="true"`));
     assert.equal([...languageSwitch.matchAll(/aria-current="true"/g)].length, 1);
-    assert.match(languageSwitch, /class="language-switch-indicator" aria-hidden="true"/);
+    assert.doesNotMatch(languageSwitch, /language-switch-indicator/);
     assert.match(languageSwitch, /class="language-switch-divider" aria-hidden="true">\/<\/span>/);
     assert.match(languageSwitch, />EN<\/a>/);
     assert.match(languageSwitch, />中<\/a>/);

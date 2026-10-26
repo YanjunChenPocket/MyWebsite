@@ -46,8 +46,8 @@ Everything you might want to edit lives in plain files. **You should never need 
   Chinese biography and News use 陈彦君 and 韩腾. The institute link uses its
   Chinese homepage. The CV remains the existing English PDF; its Chinese tooltip
   says so. Chinese resource buttons remain 论文 / 原文 / 视频.
-- The language switch uses flat EN / 中 text with a short sliding underline,
-  without a rounded pill, colored background, or shadow. Switching always opens
+- The language switch uses flat EN / 中 text with the current language bold,
+  without an underline, rounded pill, colored background, or shadow. Switching always opens
   the other domain's homepage at the top; section anchors are never copied.
   On wide desktop screens it sits independently at the upper right, aligned
   above News, without moving Home / Publication. Narrow screens keep it in the
