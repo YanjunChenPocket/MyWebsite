@@ -5,9 +5,7 @@ venue: "UIST 2026: The 39th Annual ACM Symposium on User Interface Software and 
 year: 2026
 order: -2
 paperUrl: "soon"
+doiUrl: "https://dl.acm.org/doi/10.1145/3830398.3830525"
 videoUrl: "https://www.youtube.com/watch?v=PtVEMRXrico"
-previewImage: "/uploads/NailBender-soon.png"
-previewPlaceholder: "SOON"
-previewNote: "November 4, 2026 · 2:00–2:12 PM EST"
-previewNoteZh: "2026年11月4日 · 14:00–14:12 EST（美东标准时间）"
+previewVideo: "/uploads/nailbender.mp4"
 ---

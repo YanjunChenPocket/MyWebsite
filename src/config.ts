@@ -22,7 +22,7 @@ export const site = {
   hero: {
     name: 'Hi, I am Yanjun Chen.',
     photo: '/uploads/cropped-me.png',
-    cvUrl: '/uploads/Yanjun_Chen.pdf',
+    cvUrl: '/uploads/Yanjun_Chen.pdf?v=20261031',
     googleScholarUrl: 'https://scholar.google.com/citations?user=EvPrj_QAAAAJ',
     linkedinUrl: 'https://www.linkedin.com/in/yanjunc/',
     githubUrl: 'https://github.com/YanjunChenPocket',

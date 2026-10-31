@@ -150,8 +150,6 @@ test('pre-rendered languages have correct content, metadata, and shared links', 
   assert.doesNotMatch(chinese, /<span>(pdf|doi)<\/span>/);
   assert.match(english, /<span>pdf<\/span>/);
   assert.match(english, /<span>doi<\/span>/);
-  assert.match(english, /November 4, 2026 · 2:00–2:12 PM EST/);
-  assert.match(chinese, /2026年11月4日 · 14:00–14:12 EST（美东标准时间）/);
   assert.match(chinese, /NailBender: Exploring Nail Flexion for Haptic Input and Output/);
   assert.match(chinese, /Chutian Jiang\*/);
   assert.match(chinese, /<strong>Yanjun Chen<\/strong>\*/);

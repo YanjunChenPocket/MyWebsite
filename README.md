@@ -152,6 +152,31 @@ ffmpeg -i original.mp4 -t 6 -vf scale=-2:720 -c:v libx264 -crf 28 -an preview.mp
 
 A 1–2 MB preview file is plenty.
 
+### October 31, 2026 — CV and NailBender release
+
+- Both domains use the updated `public/uploads/Yanjun_Chen.pdf`. The shared CV
+  link includes `?v=20261031` so returning visitors request the new version.
+- NailBender now links to `https://dl.acm.org/doi/10.1145/3830398.3830525`.
+  Its existing YouTube button is unchanged; the PDF button remains pending
+  until a manuscript PDF is provided.
+- The old SOON image and date overlay are replaced by `nailbender.mp4`, with
+  a matching first-frame poster at `public/uploads/posters/nailbender.jpg`.
+  The `.com` autoplay and `.cn` poster / click-to-play behavior is unchanged.
+- The entire 26.6-second clip is retained. The web version is 960 × 540, 24 fps,
+  H.264 / yuv420p, without audio, and has fast-start metadata. It is 1,407,515
+  bytes rather than 38,200,001 bytes (96.3% smaller). The poster is 20,520 bytes.
+- The untouched original video is backed up locally outside the deployed site
+  at `../Backup/2026-10-31-nailbender/nailbender-original.mp4` (SHA-256
+  `38f57d47d5ce293901432531ee59f17dbb85026b458fab49a8d0dbe4663952ce`).
+  The earlier CV and NailBender metadata remain recoverable from Git revision
+  `0cd65a8`; the old preview image is also retained.
+
+Reproduce the web encoding from the original backup (use a new output filename):
+
+```bash
+ffmpeg -i nailbender-original.mp4 -map 0:v:0 -vf "scale=960:540:flags=lanczos,fps=24,setsar=1" -c:v libx264 -preset slow -crf 27 -pix_fmt yuv420p -an -sn -dn -map_metadata -1 -movflags +faststart nailbender-preview.mp4
+```
+
 ---
 
 ## Deploying to Cloudflare Pages
