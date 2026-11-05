@@ -181,10 +181,20 @@ ffmpeg -i nailbender-original.mp4 -map 0:v:0 -vf "scale=960:540:flags=lanczos,fp
 
 - News now leads with “Presented NailBender at UIST 2026.” dated November 4,
   with the corresponding Chinese copy on `.cn`.
-- The enabled NailBender PDF / 论文 button opens the supplied Google Drive file:
-  `https://drive.google.com/file/d/1G5YVRRutHSPw2iOG-jkxJNuAxAZh0NYw/view?usp=sharing`.
-  Both domains share this link; the DOI, YouTube link, and compressed preview
-  remain unchanged.
+- The NailBender PDF / 论文 button now opens the same-origin file
+  `public/uploads/NailBender-Exploring-Nail-Flexion-for-Haptic-Input-and-Output.pdf`,
+  matching the other papers. Neither language version depends on Google Drive.
+  The DOI, YouTube link, and compressed preview remain unchanged.
+- The supplied PDF was 28,129,305 bytes, above the hosting limit of 25 MiB.
+  Lossless PNG-predictor image compression reduced it to 23,082,927 bytes,
+  retaining all image samples, full resolution, text, annotations, tags, and
+  fast web view. All 14 pages have identical text, links, and rendered pixels
+  at 96 dpi before and after optimization.
+- The untouched original and verification records are saved locally outside
+  the website in `../Backup/2026-11-04-nailbender-pdf/`. The original SHA-256 is
+  `9b76cce041f090d9e619dd447e0f8b64094954230b58b3501a21b5c4639b0dbf`;
+  the hosted PDF SHA-256 is
+  `152d8fce1da9404eb0b61155f88495b2d6a3f77263e581860f8e773feea3e99a`.
 
 ---
 

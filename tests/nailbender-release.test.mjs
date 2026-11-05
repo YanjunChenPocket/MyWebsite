@@ -13,9 +13,9 @@ for (const [page, pdfLabel, doiLabel] of [['index.html', 'pdf', 'doi'], ['zh/ind
     assert.match(card, /<video[^>]*autoplay[^>]*muted[^>]*loop[^>]*playsinline/);
     const pdfButton = card.match(/<a [^>]*class="entry-link entry-link-pdf"[^>]*>[\s\S]*?<\/a>/)?.[0];
     assert.ok(pdfButton, 'The NailBender PDF button must be enabled');
-    assert.ok(pdfButton.includes('href="https://drive.google.com/file/d/1G5YVRRutHSPw2iOG-jkxJNuAxAZh0NYw/view?usp=sharing"'));
+    assert.ok(pdfButton.includes('href="/uploads/NailBender-Exploring-Nail-Flexion-for-Haptic-Input-and-Output.pdf"'));
     assert.ok(pdfButton.includes(`<span>${pdfLabel}</span>`));
-    assert.doesNotMatch(card, /entry-link-disabled|aria-disabled="true"/);
+    assert.doesNotMatch(card, /entry-link-disabled|aria-disabled="true"|drive\.google\.com/);
     assert.match(card, new RegExp(`<a href="https://dl\\.acm\\.org/doi/10\\.1145/3830398\\.3830525" class="entry-link entry-link-doi"[^>]*>[\\s\\S]*?<span>${doiLabel}</span>`));
     assert.match(card, /href="https:\/\/www.youtube.com\/watch\?v=PtVEMRXrico"/);
     assert.doesNotMatch(card, /entry-placeholder|NailBender-soon|preview-note/);
@@ -39,8 +39,16 @@ test('NailBender preview stays small and its MP4 metadata is before the media', 
   assert.ok(atoms.indexOf('moov') < atoms.indexOf('mdat'), 'Fast-start playback must not wait for the whole file');
 });
 
-test('the production build contains the exact updated CV, video, and poster', async () => {
-  for (const asset of ['Yanjun_Chen.pdf', 'nailbender.mp4', 'posters/nailbender.jpg']) {
+test('the local NailBender PDF fits static hosting and retains fast web view', async () => {
+  const pdf = await readFile(new URL('../public/uploads/NailBender-Exploring-Nail-Flexion-for-Haptic-Input-and-Output.pdf', import.meta.url));
+  assert.ok(pdf.length > 100_000 && pdf.length < 25 * 1024 * 1024, 'Keep the PDF below the 25 MiB static asset limit');
+  assert.equal(pdf.toString('ascii', 0, 5), '%PDF-');
+  assert.match(pdf.toString('ascii', 0, 1024), /\/Linearized/);
+  assert.match(pdf.toString('ascii', pdf.length - 1024), /%%EOF/);
+});
+
+test('the production build contains the exact paper, CV, video, and poster', async () => {
+  for (const asset of ['NailBender-Exploring-Nail-Flexion-for-Haptic-Input-and-Output.pdf', 'Yanjun_Chen.pdf', 'nailbender.mp4', 'posters/nailbender.jpg']) {
     const source = await readFile(new URL(`../public/uploads/${asset}`, import.meta.url));
     const built = await readFile(new URL(`../dist/uploads/${asset}`, import.meta.url));
     assert.deepEqual(built, source, `Published ${asset} must match its source`);

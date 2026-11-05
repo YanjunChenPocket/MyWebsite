@@ -4,7 +4,7 @@ authors: "**Yanjun Chen**, Xiping Sun, Jung-Hwan Youn, and Craig Shultz"
 venue: "UIST 2026: The 39th Annual ACM Symposium on User Interface Software and Technology"
 year: 2026
 order: -2
-paperUrl: "https://drive.google.com/file/d/1G5YVRRutHSPw2iOG-jkxJNuAxAZh0NYw/view?usp=sharing"
+paperUrl: "/uploads/NailBender-Exploring-Nail-Flexion-for-Haptic-Input-and-Output.pdf"
 doiUrl: "https://dl.acm.org/doi/10.1145/3830398.3830525"
 videoUrl: "https://www.youtube.com/watch?v=PtVEMRXrico"
 previewVideo: "/uploads/nailbender.mp4"
