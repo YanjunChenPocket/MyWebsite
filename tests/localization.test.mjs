@@ -165,7 +165,7 @@ test('pre-rendered languages have correct content, metadata, and shared links', 
   for (const html of [english, chinese]) {
     assert.match(html, /<img src="\/uploads\/title_LOGO.png" alt="Yanjun Chen" class="brand-logo"/);
     assert.equal([...html.matchAll(/<p class="hero-bio"/g)].length, 3);
-    assert.equal([...html.matchAll(/<li class="news-item"/g)].length, 5);
+    assert.equal([...html.matchAll(/<li class="news-item"/g)].length, 6);
     assert.match(html, /hreflang="zh-CN" href="https:\/\/chen-yanjun.cn\/"/);
     const news = html.match(/<aside class="news-sidebar"[\s\S]*?<\/aside>/)[0];
     assert.doesNotMatch(news, /<a\s/);
@@ -174,6 +174,19 @@ test('pre-rendered languages have correct content, metadata, and shared links', 
   const links = html => [...html.matchAll(/<a [^>]*href="([^"]+)"/g)]
     .map(match => match[1].replace('https://www.iscas.ac.cn/', 'http://english.is.cas.cn/')).sort();
   assert.deepEqual(links(english), links(chinese));
+});
+
+test('the November 4 NailBender presentation is the newest news in both languages', async () => {
+  for (const [page, date, text, footer] of [
+    ['index.html', '11/4/2026', 'Presented NailBender at UIST 2026.', 'Last updated: 11/2026'],
+    ['zh/index.html', '2026.11.04', '在 UIST 2026 会议上发表 NailBender 主题演讲。', '最后更新：2026年11月'],
+  ]) {
+    const html = await readFile(new URL(`../dist/${page}`, import.meta.url), 'utf8');
+    const firstNews = html.match(/<li class="news-item">[\s\S]*?<\/li>/)?.[0];
+    assert.ok(firstNews?.includes(`<span class="news-date">${date}</span>`));
+    assert.ok(firstNews.includes(`<span class="news-text">${text}</span>`));
+    assert.ok(html.includes(footer));
+  }
 });
 
 test('both headers include accessible language links with the correct selected language', async () => {

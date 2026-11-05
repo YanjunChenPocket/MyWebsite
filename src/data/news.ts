@@ -2,6 +2,11 @@
 // Add newest items at the top of the array.
 export const news: { date: string; text: string; textZh: string }[] = [
   {
+    date: "11/4/2026",
+    text: "Presented NailBender at UIST 2026.",
+    textZh: "在 UIST 2026 会议上发表 NailBender 主题演讲。",
+  },
+  {
     date: "10/7/2026",
     text: "Gave an invited talk on NailBender at UIST Talks, UIUC HCI Seminar.",
     textZh: "在 UIUC 人机交互研讨会的 UIST Talks 活动中发表 NailBender 主题演讲。",

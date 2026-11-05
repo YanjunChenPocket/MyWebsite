@@ -33,5 +33,5 @@ export const site = {
   },
 
   // Footer
-  footer: `© ${new Date().getFullYear()} by Yanjun Chen | Last updated: 10/2026`,
+  footer: `© ${new Date().getFullYear()} by Yanjun Chen | Last updated: 11/2026`,
 };

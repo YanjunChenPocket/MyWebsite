@@ -18,7 +18,7 @@ const chineseSite = {
     interests: '我的研究方向是人机交互（HCI），重点关注触觉技术与可穿戴感知。我设计并开发小型化的感知与触觉系统，用于感知人的交互行为并提供物理反馈，让人与数字及物理环境之间的交互更加自然。',
     background: `此前，我曾在<a href="https://www.iscas.ac.cn/" target="_blank" rel="noopener">中国科学院软件研究所</a>担任研究助理，与<a href="https://scholar.google.co.jp/citations?user=kHKwQ9gAAAAJ&hl=en" target="_blank" rel="noopener">韩腾教授</a>合作。我本科毕业于成都信息工程大学计算机科学与技术专业，获工学学士学位。`,
   },
-  footer: `© ${new Date().getFullYear()} 陈彦君 | 最后更新：2026年10月`,
+  footer: `© ${new Date().getFullYear()} 陈彦君 | 最后更新：2026年11月`,
 };
 
 const messages = {
