@@ -157,8 +157,8 @@ A 1–2 MB preview file is plenty.
 - Both domains use the updated `public/uploads/Yanjun_Chen.pdf`. The shared CV
   link includes `?v=20261031` so returning visitors request the new version.
 - NailBender now links to `https://dl.acm.org/doi/10.1145/3830398.3830525`.
-  Its existing YouTube button is unchanged; the PDF button remains pending
-  until a manuscript PDF is provided.
+  Its existing YouTube button is unchanged. The PDF button was pending at this
+  release and was enabled in the November 4 update below.
 - The old SOON image and date overlay are replaced by `nailbender.mp4`, with
   a matching first-frame poster at `public/uploads/posters/nailbender.jpg`.
   The `.com` autoplay and `.cn` poster / click-to-play behavior is unchanged.
@@ -176,6 +176,15 @@ Reproduce the web encoding from the original backup (use a new output filename):
 ```bash
 ffmpeg -i nailbender-original.mp4 -map 0:v:0 -vf "scale=960:540:flags=lanczos,fps=24,setsar=1" -c:v libx264 -preset slow -crf 27 -pix_fmt yuv420p -an -sn -dn -map_metadata -1 -movflags +faststart nailbender-preview.mp4
 ```
+
+### November 4, 2026 — NailBender presentation and PDF
+
+- News now leads with “Presented NailBender at UIST 2026.” dated November 4,
+  with the corresponding Chinese copy on `.cn`.
+- The enabled NailBender PDF / 论文 button opens the supplied Google Drive file:
+  `https://drive.google.com/file/d/1G5YVRRutHSPw2iOG-jkxJNuAxAZh0NYw/view?usp=sharing`.
+  Both domains share this link; the DOI, YouTube link, and compressed preview
+  remain unchanged.
 
 ---
 

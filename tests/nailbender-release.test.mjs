@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
-for (const [page, doiLabel] of [['index.html', 'doi'], ['zh/index.html', '原文']]) {
-  test(`${page} shows the released NailBender preview and DOI`, async () => {
+for (const [page, pdfLabel, doiLabel] of [['index.html', 'pdf', 'doi'], ['zh/index.html', '论文', '原文']]) {
+  test(`${page} shows the released NailBender PDF, preview, and DOI`, async () => {
     const html = await readFile(new URL(`../dist/${page}`, import.meta.url), 'utf8');
     const card = html.match(/<article class="entry">[\s\S]*?<\/article>/)?.[0];
     assert.ok(card, 'The first publication must exist');
@@ -11,6 +11,11 @@ for (const [page, doiLabel] of [['index.html', 'doi'], ['zh/index.html', '原文
     assert.match(card, /data-src="\/uploads\/nailbender.mp4"/);
     assert.match(card, /poster="\/uploads\/posters\/nailbender.jpg"/);
     assert.match(card, /<video[^>]*autoplay[^>]*muted[^>]*loop[^>]*playsinline/);
+    const pdfButton = card.match(/<a [^>]*class="entry-link entry-link-pdf"[^>]*>[\s\S]*?<\/a>/)?.[0];
+    assert.ok(pdfButton, 'The NailBender PDF button must be enabled');
+    assert.ok(pdfButton.includes('href="https://drive.google.com/file/d/1G5YVRRutHSPw2iOG-jkxJNuAxAZh0NYw/view?usp=sharing"'));
+    assert.ok(pdfButton.includes(`<span>${pdfLabel}</span>`));
+    assert.doesNotMatch(card, /entry-link-disabled|aria-disabled="true"/);
     assert.match(card, new RegExp(`<a href="https://dl\\.acm\\.org/doi/10\\.1145/3830398\\.3830525" class="entry-link entry-link-doi"[^>]*>[\\s\\S]*?<span>${doiLabel}</span>`));
     assert.match(card, /href="https:\/\/www.youtube.com\/watch\?v=PtVEMRXrico"/);
     assert.doesNotMatch(card, /entry-placeholder|NailBender-soon|preview-note/);
